@@ -295,4 +295,6 @@
     <!-- Placeholder string when there is no history to be shown. [CHAR_LIMIT=40] -->
     <string name="no_history">No History</string>
 
+    <!-- The label of the advanced functions, peeking below the keys: scrolled up to [CHAR LIMIT=40] -->
+    <string name="advanced_pad_label">More functions</string>
 </resources>

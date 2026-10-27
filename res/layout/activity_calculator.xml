@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/activity_background"
     android:orientation="vertical"
-    app:layoutDescription="@xml/activity_calculator_scene">
+    app:layoutDescription="@xml/activity_calculator_scene_scroll">
 
     <FrameLayout
         android:id="@+id/history_frame"
@@ -33,26 +33,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/advanced_pad"
-        layout="@layout/advanced_pad"
+    <!-- The input pad fills the screen below the display, the advanced pad under it, its label
+         peeking: scrolled up to, or reached by stepping on past = -->
+    <com.android.calculator2.PadsScrollView
+        android:id="@+id/pads_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="@dimen/layout_advanced_pad_ratio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display" />
-
-    <include
-        android:id="@+id/input_pad"
-        layout="@layout/input_pad"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="@dimen/layout_input_pad_ratio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/advanced_pad" />
-
+        app:layout_constraintTop_toBottomOf="@id/display">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/input_pad"
+                layout="@layout/input_pad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/advanced_pad_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurface"
+                android:drawableEnd="@drawable/ic_expand_less"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/pads_horizontal_edge_padding"
+                android:paddingVertical="4dp"
+                android:text="@string/advanced_pad_label"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+            <include
+                android:id="@+id/advanced_pad"
+                layout="@layout/advanced_pad"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </LinearLayout>
+    </com.android.calculator2.PadsScrollView>
     <FrameLayout
         android:id="@+id/animation_helper"
         android:layout_width="0dp"
