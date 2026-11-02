@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Short portrait screens need the height for text and keys instead of display padding. -->
+    <dimen name="formula_padding_top">0dp</dimen>
+    <dimen name="formula_padding_bottom">0dp</dimen>
+    <dimen name="result_padding_top">0dp</dimen>
+    <dimen name="result_padding_bottom">0dp</dimen>
+</resources>

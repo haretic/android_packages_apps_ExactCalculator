@@ -22,7 +22,7 @@
         <com.android.calculator2.CalculatorScrollView
             android:id="@+id/formula_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:overScrollMode="never"
             android:scrollbars="none">
@@ -41,7 +41,7 @@
             android:id="@+id/result"
             style="@style/DisplayTextStyle.Result"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:bufferType="spannable"
             android:singleLine="true"
