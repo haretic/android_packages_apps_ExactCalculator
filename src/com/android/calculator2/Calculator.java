@@ -367,6 +367,7 @@ public class Calculator extends AppCompatActivity
                 if (currentId == R.id.start_state) {
                     removeHistoryFragment();
                 }
+                invalidateOptionsMenu();
             }
 
             @Override
@@ -1060,6 +1061,10 @@ public class Calculator extends AppCompatActivity
         // against crashes until we find the root cause (b/34763650).
         visible &= mainResult != null && mainResult.exactlyDisplayable();
         menu.findItem(R.id.menu_fraction).setVisible(visible);
+
+        // Not History with the history open: its menu sits under it then, below the history's own
+        menu.findItem(R.id.menu_history).setVisible(
+                mMainCalculator.getCurrentState() != R.id.end_state);
 
         return true;
     }
